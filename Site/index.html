@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- JQuery and jquery See-Thru -->
+		<script type="text/javascript" src="jQuery/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="JQuery/jquery-seeThru.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+		// jQuery load
+				$(document).ready(function(){
+					console.log("DOM Ready");
+				
+					$('#theVid').ready(function(){
+						console.log("Video ready");
+						$('#theVid').seeThru();
+						console.log("done!");
+					})
+				});
+		</script>
+		<div>
+			<!-- Load dat video -->
+			<video id="theVid" controls>
+				<source src="video/Composite_WithAlpha.webm" type="video/webm">
+				<source src="vide/Composite_WithAlpha.mp4" type="video/mp4">
+			</video>
+			
+		</div>
+	</body>
+</html>
