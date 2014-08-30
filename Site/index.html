@@ -12,16 +12,25 @@
 				$(document).ready(function(){
 					console.log("DOM Ready");
 				
-					$('#theVid').ready(function(){
+					$('#alphaOverlay').ready(function(){
 						console.log("Video ready");
-						$('#theVid').seeThru();
+						$('#alphaOverlay').seeThru();
 						console.log("done!");
 					})
 				});
 		</script>
 		<div>
-			<!-- Load dat video -->
-			<video id="theVid" controls>
+			<!-- The alpha-d out video -->
+			<video id="alphaOverlay" controls>
+				<source src="video/Composite_WithAlpha.webm" type="video/webm">
+				<source src="vide/Composite_WithAlpha.mp4" type="video/mp4">
+			</video>
+			<!-- The processing sketch, rendered to canvase via ProcessingJS -->
+			<<canvas data-processing-sources="Processing/build/build.pde">
+				
+			</canvas>
+			<!-- The backgounr video -->
+			<video id="bgVideo" controls>
 				<source src="video/Composite_WithAlpha.webm" type="video/webm">
 				<source src="vide/Composite_WithAlpha.mp4" type="video/mp4">
 			</video>

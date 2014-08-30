@@ -1,0 +1,20 @@
+#alphaOverlay {
+	position: absolute;
+	left:20px;
+	top:20px;
+	z-index: 1; 
+}
+
+#bgVideo {
+	position: absolute;
+	left:20px;
+	top:20px;
+	z-index: -1;
+}
+
+#processing {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	z-index: 0;
+}
