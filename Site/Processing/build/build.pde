@@ -12,6 +12,11 @@ void setup() {
 }
 
 void draw() {
+	loadPixels();
+	for(int i = 0; i < width * height; i++) {
+		pixels[i] = 0; 
+	};
+	background(0, 0);
 	// Mix up the colors
 	r = sin(radians(float(frameCount)));
 	r = map(r, -1, 1, 0, 255);
@@ -19,11 +24,13 @@ void draw() {
 	g = map(g, -1, 1, 0, 255);
 	b = sin(radians(float(frameCount)*2));
 	b = map(b, -1, 1, 0, 255);
+	/*
 	if(frameCount%15 == 0) {
 		println("r: "+r);
 		println("g: "+g);
 		println("b: "+b);
 	}
+	*/
 	// Draw the text
 	fill(r,g,b);
 	textFont(f, 150);
