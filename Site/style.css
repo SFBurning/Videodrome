@@ -29,8 +29,8 @@ body {
 	left:20px;
 	top:20px;
 	z-index: 1;
-	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateZ(3);
+/*	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateZ(3);*/
 }
 
 #bgDiv {
@@ -40,8 +40,8 @@ body {
 	left:20px;
 	top:20px;
 	z-index: 3; 
-	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateZ(1);
+/*	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateZ(1);*/
 }
 
 #processingDiv {
@@ -51,7 +51,7 @@ body {
 	left:20px;
 	top:20px;
 	z-index: 2; 
-	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateZ(2);
+/*	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateZ(2);*/
 }
 

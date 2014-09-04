@@ -16,7 +16,7 @@ void draw() {
 	for(int i = 0; i < width * height; i++) {
 		pixels[i] = 0; 
 	};
-	background(0, 0);
+	background(0, )0;
 	// Mix up the colors
 	r = sin(radians(float(frameCount)));
 	r = map(r, -1, 1, 0, 255);
