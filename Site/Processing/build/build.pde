@@ -28,8 +28,7 @@ void draw() {
 	if(frameCount%15 == 0) {
 		println("r: "+r);
 		println("g: "+g);
-		println("b: "+b);
-	}
+		println("b: "+b); }
 	*/
 	// Draw the text
 	fill(r,g,b);
