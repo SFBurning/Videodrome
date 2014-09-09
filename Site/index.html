@@ -5,6 +5,7 @@
 		<!-- JQuery and jquery See-Thru -->
 		<script type="text/javascript" src="jQuery/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="JQuery/jquery-seeThru.min.js"></script>
+		<script type="text/javascript" src="Processing/processing.min.js"></script>
 	</head>
 	<body>
 		<script type="text/javascript">
@@ -19,22 +20,28 @@
 					})
 				});
 		</script>
-		<div>
+		<div id="container">
 			<!-- The alpha-d out video -->
+			<div id="overlayDiv">
 			<video id="alphaOverlay" controls>
 				<source src="video/Composite_WithAlpha.webm" type="video/webm">
 				<source src="vide/Composite_WithAlpha.mp4" type="video/mp4">
 			</video>
+			</div>
 			<!-- The processing sketch, rendered to canvase via ProcessingJS -->
-			<<canvas data-processing-sources="Processing/build/build.pde">
+			<div id="processingDiv">
+			<canvas id=processing data-processing-sources="Processing/build/build.pde" width=1280 height=720>
 				
 			</canvas>
+			</div>
 			<!-- The backgounr video -->
-			<video id="bgVideo" controls>
-				<source src="video/Composite_WithAlpha.webm" type="video/webm">
-				<source src="vide/Composite_WithAlpha.mp4" type="video/mp4">
+			<div id="bgDiv">
+			<video id="bgVideo" autoplay>
+				<source src="video/Composite.webm" type="video/webm">
+				<source src="vide/Composite.mp4" type="video/mp4">
 			</video>
-			
-		</div>
+			</div>
+		</div> 
+		<!-- End container -->
 	</body>
 </html>

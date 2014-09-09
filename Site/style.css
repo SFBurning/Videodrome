@@ -1,20 +1,57 @@
+body {
+	background-color: #FF0000;
+}
+
 #alphaOverlay {
 	position: absolute;
-	left:20px;
-	top:20px;
-	z-index: 1; 
+	left: 0px;
+	top: 0px;
 }
 
 #bgVideo {
 	position: absolute;
-	left:20px;
-	top:20px;
-	z-index: -1;
+	left: 0px;
+	top: 0px;
 }
 
 #processing {
 	position: absolute;
-	left: 20px;
-	top: 20px;
-	z-index: 0;
+	left: 0px;
+	top: 0px;
 }
+   
+
+
+#overlayDiv {
+	width: 1280;
+	height: 720;
+	position: absolute;
+	left:20px;
+	top:20px;
+	z-index: 1;
+/*	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateZ(3);*/
+}
+
+#bgDiv {
+	width: 1280;
+	height: 720;
+	position: absolute;
+	left:20px;
+	top:20px;
+	z-index: 3; 
+/*	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateZ(1);*/
+}
+
+#processingDiv {
+	width: 1280;
+	height: 720;
+	position: absolute;
+	left:20px;
+	top:20px;
+	z-index: 2; 
+/*	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateZ(2);*/
+}
+
