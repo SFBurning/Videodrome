@@ -14,48 +14,58 @@ class AETracker {
 
 
 	AETracker(String jData) {
-		rawData = loadJSONArray(jData);
+		rawData = loadJSONArray("parsedAEData.json");
 
 		//Determine the start frame
-		for (int i = 0; i < rawData.length; i++) {
-			if(rawData[i][0] != 0 && rawData[i][1] != 0) {
+		for (int i = 0; i < rawData.size(); i++) {
+			if(rawData.getJSONArray(i).getInt(0) != 0 && rawData.getJSONArray(i).getInt(1) != 0) {
 				startFrame = i; // If the current frame has data, it is the starframe
 				break; // Job done, exit the loop 
 			}
 		}
 		// Set pos to current frame positions
-		pos = new PVector(rawData[startFrame][0],rawData[startFrame][1]);
+		pos = new PVector(rawData.getJSONArray(startFrame).getInt(0),rawData.getJSONArray(startFrame).getInt(1));
 		// Set prevPos to current frame, for now
-		prevPos = new PVector(rawData[startFrame][0],rawData[startFrame][1]);
+		prevPos = new PVector(rawData.getJSONArray(startFrame).getInt(0),rawData.getJSONArray(startFrame).getInt(1));
 		// Set delta to zero
 		deltaPos = new PVector(0, 0);
+
+		// Start on frame 2, TEMPORARY
+		curFrame = 2; 
 	
 	}
 
-	public static void calculate() {
+	void calculate(int fc) {
 
 		// Set the previous position and delta
-		if(frameCount > startFrame) {
-			prevPos.x = rawData[frame-1][0];
-			prevPos.y = rawData[frame-1][1];
-		}
+		
+		prevPos.x = rawData.getJSONArray(curFrame-1).getInt(0);
+		prevPos.y = rawData.getJSONArray(curFrame-1).getInt(1);
+		
 		// Set the current position
-		if (frameCount >= startFrame) {
-			pos.x = rawData[frame][0];
-			pos.y = rawData[frame][1];
-		}
+		
+		pos.x = rawData.getJSONArray(curFrame).getInt(0);
+		pos.y = rawData.getJSONArray(curFrame).getInt(1);
+		
 
 		deltaPos.x = pos.x - prevPos.x;
 		deltaPos.y = pos.y - prevPos.y;
+
+		try {
+			rawData.getJSONArray(curFrame+1);
+			curFrame = curFrame + 1;
+		} catch (Exception e) {
+
+		}
 	}
 
-	public static PVector moveRelative() {
+	PVector moveRelative() {
 
 		return deltaPos;
 
 	}
 
-	public static PVector move() {
+	PVector move() {
 		return pos; 
 	}
 

@@ -1,5 +1,3 @@
-PFont f;
-String content;
 float r,g,b;
 PFont f; // Display Font Object 
 String content; // The text to be displayed
@@ -10,9 +8,6 @@ void setup() {
 	size(1280,720);
 	smooth();
 	frameRate(30);
-	f = loadFont("Futura-Medium-150.vlw");
-	content = "LASER\nNIPPLE\nPARTY";
-
 	// Initializations
 	f = loadFont("Futura-Medium-48.vlw"); // The font
 	content = "LIVE\nCOMPOSITED\nTEXT"; // The text to be displayed
@@ -25,7 +20,7 @@ void draw() {
 	for(int i = 0; i < width * height; i++) {
 		pixels[i] = 0; 
 	};
-	background(0, )0;
+	background(0, 0);
 	// Mix up the colors
 	r = sin(radians(float(frameCount)));
 	r = map(r, -1, 1, 0, 255);
@@ -41,14 +36,19 @@ void draw() {
 	}
 	*/
 	// Draw the text
-	fill(r,g,b);
-	textFont(f, 150);
-	text(content, 200, 200);
-	textFont(f);
-	fill(0);
-	//AETracker.calculate();
-	loc = AETracker.move();
+	kfData.calculate(frameCount);
+	loc = kfData.move();
 	pushMatrix();
+		// If tracker data is not present
+		if(loc.x == 0 && loc.y == 0) {
+			// Make the text Invisivble 
+			fill(0,0);
+		} else {
+			// Otherwise display the text
+			fill(r,g,b);
+			}
+		textFont(f);
+		println("loc.x: "+loc.x);
 		translate(loc.x, loc.y);
 		text(content, 0, 0);
 	popMatrix();
