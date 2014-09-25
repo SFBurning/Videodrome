@@ -109,16 +109,14 @@ class AETracker {
 	public void calculate(int fc) {
 
 		// Set the previous position and delta
-		
 		prevPos.x = rawData.getJSONArray(curFrame-1).getInt(0);
 		prevPos.y = rawData.getJSONArray(curFrame-1).getInt(1);
 		
 		// Set the current position
-		
 		pos.x = rawData.getJSONArray(curFrame).getInt(0);
 		pos.y = rawData.getJSONArray(curFrame).getInt(1);
 		
-
+		// Calculate the difference between current and previous frames
 		deltaPos.x = pos.x - prevPos.x;
 		deltaPos.y = pos.y - prevPos.y;
 
@@ -126,10 +124,21 @@ class AETracker {
 			rawData.getJSONArray(curFrame+1);
 			curFrame = curFrame + 1;
 		} catch (Exception e) {
-
+			pos.x = 0;
+			pos.y = 0; 
 		}
 	}
 
+	/* 
+	This class provides two methods for retrieving position information
+	
+	moveRelative() provides the change in position between two frames, and can be used without 
+	pushMatrix/popMatrix
+
+	move() provides absolute position information, and must be used with push/popMatrix
+	*/
+
+	
 	public PVector moveRelative() {
 
 		return deltaPos;
