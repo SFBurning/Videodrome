@@ -4,55 +4,52 @@ body {
 
 #alphaOverlay {
 	position: absolute;
-	left: 0px;
-	top: 0px;
+	left: 0;
+	top: 0;
 }
 
 #bgVideo {
 	position: absolute;
-	left: 0px;
-	top: 0px;
+	left: 0;
+	top: 0;
 }
 
 #processing {
 	position: absolute;
-	left: 0px;
-	top: 0px;
+	left: 0;
+	top: 0;
 }
    
 
 
 #overlayDiv {
-	width: 1280;
-	height: 720;
+	width: 1280px;
+	height: 720px;
 	position: absolute;
 	left:20px;
 	top:20px;
 	z-index: 1;
-/*	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateZ(3);*/
+
 }
 
 #bgDiv {
 	background-color: black;
-	width: 1280;
-	height: 720;
+	width: 1280px;
+	height: 720px;
 	position: absolute;
 	left:20px;
 	top:20px;
 	z-index: 3; 
-/*	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateZ(1);*/
+
 }
 
 #processingDiv {
-	width: 1280;
-	height: 720;
+	width: 1280px;
+	height: 720px;
 	position: absolute;
 	left:20px;
 	top:20px;
 	z-index: 2; 
-/*	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateZ(2);*/
+
 }
 
