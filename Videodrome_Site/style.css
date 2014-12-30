@@ -1,17 +1,27 @@
 body {
-	background-color: black;
+	background-color: #000;
 }
 
-#alphaOverlay {
+iframe {
+	border: none;
+}
+
+#container {
+	width: 100%;
+}
+
+
+.seeThru-display {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+
+#bgVideo, #bgImg {
 	position: absolute;
 	left: 0;
 	top: 0;
-}
-
-#bgVideo {
-	position: absolute;
-	left: 0;
-	top: 0;
+	z-index: -1;
 }
 
 #processing {
@@ -32,24 +42,34 @@ body {
 
 }
 
-#bgDiv {
-	background-color: black;
-	width: 1280px;
-	height: 720px;
-	position: absolute;
-	left:20px;
-	top:20px;
-	z-index: 3; 
-
-}
-
 #processingDiv {
 	width: 1280px;
 	height: 720px;
 	position: absolute;
 	left:20px;
 	top:20px;
-	z-index: 2; 
+	z-index: 2;
 
 }
+
+#bgDiv {
+	width: 1280px;
+	height: 720px;
+	position: absolute;
+	left:20px;
+	top:20px;
+	z-index: -2;
+
+}
+
+#footer {
+	position:absolute;
+	text-align: center;
+	width: 100%;
+	bottom:0;
+
+	align-content: center;
+	color: #ffffff;
+}
+
 
