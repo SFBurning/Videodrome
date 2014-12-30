@@ -1,5 +1,5 @@
 body {
-	background-color: #FF0000;
+	background-color: black;
 }
 
 #alphaOverlay {
@@ -34,6 +34,7 @@ body {
 }
 
 #bgDiv {
+	background-color: black;
 	width: 1280;
 	height: 720;
 	position: absolute;
