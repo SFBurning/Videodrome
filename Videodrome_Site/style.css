@@ -52,6 +52,14 @@ iframe {
 
 }
 
+#sketch {
+	width: 1280px;
+	height: 720px;
+	position: relative;
+	left: 0;
+	top: 0;
+}
+
 #bgDiv {
 	width: 1280px;
 	height: 720px;

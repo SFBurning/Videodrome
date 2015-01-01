@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <!-- JQuery and jquery See-Thru -->
-    <script type="text/javascript" src="JQuery/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="JQuery/seeThru.min.js"></script>
-    <script type="text/javascript" src="JQuery/p5.min.js"></script>
-    <script type="text/javascript" src="JQuery/jquery.jplayer.min.js"></script>
+    <!-- libs and jquery See-Thru -->
+    <script type="text/javascript" src="libs/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="libs/seeThru.min.js"></script>
+    <script type="text/javascript" src="libs/p5.min.js"></script>
+    <script type="text/javascript" src="libs/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src="libs/VideoFrame.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -31,6 +32,18 @@
         $('#current').text(currentTime);
         $('#duration').text(duration);
     }
+
+
+/*
+    var video = VideoFrame({
+        id : "alphaOverlay",
+        frameRate : 24;
+        callback : function() {
+            // Code here to pass info on to the processing canvas element
+        }
+    });
+
+*/
 </script>
 <div id="container">
     <!-- The alpha-d out video -->
@@ -43,16 +56,16 @@
     </div>
     <!-- The processing sketch, rendered to canvas via ProcessingJS  -->
     <div id="processingDiv">
-        <canvas id=processing data-processing-sources="Processing/build/build.pde" width=1280 height=720>
+        <iframe id="sketch" src="Processing/P5js/tracker.html">
 
-        </canvas>
+        </iframe>
     </div>
     <!-- The background video  -->
     <div id="bgDiv">
         <img src="video/BG.png" id="bgImg"/>
         <!--<video id="bgVideo" autoplay>-->
-            <!--<source src="video/Composite.mp4" type="video/mp4">-->
-            <!--<source src="video/Composite.webm" type="video/webm">-->
+        <!--<source src="video/Composite.mp4" type="video/mp4">-->
+        <!--<source src="video/Composite.webm" type="video/webm">-->
         <!--</video>-->
     </div>
     <div id="footer">
