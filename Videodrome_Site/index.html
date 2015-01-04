@@ -14,50 +14,91 @@
 <body>
 <script type="text/javascript">
     // jQuery load
+
     var video;
+    var rawData;
+    var curFrame = 0;
+    var lastFrame;
+    var vidTime;
+    var p5Time;
+    var predictiveOffset = 4;
+
+
+    // P5 JS //
+    function preload() {
+        rawData = loadJSON("Processing/P5js/parsedAEData.json");
+    }
+
+    function setup() {
+
+
+        canvas = createCanvas(500, 500);
+        canvas.parent("processingDiv");
+        background(0, 0);
+        lastFrame = 0;
+        noStroke();
+        fill(255, 0, 0);
+        ellipseMode(CENTER);
+    }
+
+    function draw() {
+        clear(); // Clear to alpha
+        // CurFrame is being updated by the videoFrame callback. Hott!
+        var p5Date = new Date();
+        p5Time = p5Date.getTime();
+        predictiveOffset = Math.ceil(parseFloat(((p5Time - vidTime) / 1000) * 24));
+        console.log(predictiveOffset);
+        var x = (rawData[curFrame + predictiveOffset + 3][0]) - (width/2);
+        var y = (rawData[curFrame + predictiveOffset + 3][1]) - (height/2);
+        if (x != null && y != 0) { // neither null nor void
+            ellipse(width / 2, height / 2, width, height);
+            canvas.position(x,y);
+        }
+
+    }
 
     $(document).ready(function () {
+        video = new VideoFrame({
+            id: "alphaOverlay",
+            frameRate: FrameRates.film,
+            callback: function(response) {
+                //console.log(response);
+                var vidDate = new Date();
+                vidTime = vidDate.getTime();
+                curFrame = response;
+                $("#current").text(response);
+            }
+        });
+
+        video.listen("frame", 2);
+
+
+
         var $alphaOverlay = $('#alphaOverlay');
         $alphaOverlay.ready(function () {
-            video = VideoFrame({
-                id: "alphaOverlay",
-                frameRate: FrameRates.film,
-                callback: function() {
-                    alert("callback");
-                    var frame = this.get();
-                    $("#current").text(frame);
-                    $("#sketch").contents().find("#time").text(frame);
-                }
-            });
+
             $('#alphaOverlay').seeThru();
         });
 
 
-        // Reaches into the P5js iframe and loads the newest time data
-
     });
 
-    function updateFrame() {
-        var frame = video.get();
-        $("#current").text(frame);
-        $("#sketch").contents().find("#time").text(frame);
-        return frame;
-    }
 </script>
 <div id="container">
     <!-- The alpha-d out video -->
     <!---->
+
+    <!-- The processing sketch, rendered to canvas via ProcessingJS  -->
+    <div id="processingDiv">
+
+        <!--<iframe id="sketch" src="Processing/P5js/tracker.html"></iframe>-->
+    </div>
+
     <div id="overlayDiv">
         <video id="alphaOverlay" controls autoplay>
             <source src="video/Composite_WithAlpha.webm" type="video/webm">
             <source src="video/Composite_WithAlpha.mp4" type="video/mp4">
         </video>
-    </div>
-    <!-- The processing sketch, rendered to canvas via ProcessingJS  -->
-    <div id="processingDiv">
-        <iframe id="sketch" src="Processing/P5js/tracker.html">
-
-        </iframe>
     </div>
     <!-- The background video  -->
     <div id="bgDiv">

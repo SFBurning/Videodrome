@@ -9,6 +9,7 @@ function preload(){
 
 function setup() {
     canvas = createCanvas(100, 100);
+    canvas.parent("processingDiv");
     frameRate(24);
     background(0, 0);
     lastFrame = 0;
