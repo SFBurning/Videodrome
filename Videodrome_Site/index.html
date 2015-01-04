@@ -6,6 +6,7 @@
     <script type="text/javascript" src="libs/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="libs/seeThru.min.js"></script>
     <script type="text/javascript" src="libs/p5.min.js"></script>
+    <script src="libs/p5.dom.js"></script>
     <script type="text/javascript" src="libs/jquery.jplayer.min.js"></script>
     <script type="text/javascript" src="libs/VideoFrame.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -13,37 +14,35 @@
 <body>
 <script type="text/javascript">
     // jQuery load
+    var video;
+
     $(document).ready(function () {
-        console.log("DOM Ready");
-        $('#alphaOverlay').ready(function () {
-            console.log("Video ready");
+        var $alphaOverlay = $('#alphaOverlay');
+        $alphaOverlay.ready(function () {
+            video = VideoFrame({
+                id: "alphaOverlay",
+                frameRate: FrameRates.film,
+                callback: function() {
+                    alert("callback");
+                    var frame = this.get();
+                    $("#current").text(frame);
+                    $("#sketch").contents().find("#time").text(frame);
+                }
+            });
             $('#alphaOverlay').seeThru();
-            console.log("done!");
-        })
+        });
 
-        $('#alphaOverlay').on(
-                "timeupdate",
-                function (event) {
-                    onTrackedVideoFrame(this.currentTime, this.duration);
-                });
+
+        // Reaches into the P5js iframe and loads the newest time data
+
     });
 
-    function onTrackedVideoFrame(currentTime, duration) {
-        $('#current').text(currentTime);
-        $('#duration').text(duration);
+    function updateFrame() {
+        var frame = video.get();
+        $("#current").text(frame);
+        $("#sketch").contents().find("#time").text(frame);
+        return frame;
     }
-
-
-/*
-    var video = VideoFrame({
-        id : "alphaOverlay",
-        frameRate : 24;
-        callback : function() {
-            // Code here to pass info on to the processing canvas element
-        }
-    });
-
-*/
 </script>
 <div id="container">
     <!-- The alpha-d out video -->
@@ -63,10 +62,6 @@
     <!-- The background video  -->
     <div id="bgDiv">
         <img src="video/BG.png" id="bgImg"/>
-        <!--<video id="bgVideo" autoplay>-->
-        <!--<source src="video/Composite.mp4" type="video/mp4">-->
-        <!--<source src="video/Composite.webm" type="video/webm">-->
-        <!--</video>-->
     </div>
     <div id="footer">
         <div id="current">0:00</div>

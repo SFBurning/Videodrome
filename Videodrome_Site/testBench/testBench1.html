@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Testbench</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        console.log("pre-query");
+        $(document).ready(function(){
+            var theDiv = $("#test");
+            var theText = theDiv.text();
+            console.log("original data: " + theText);
+            theDiv.text("This text has been replaced");
+        });
+    </script>
+</head>
+<body style="background-color: #000000">
+<script type="text/javascript">
+    console.log("bodyscript");
+</script>
+<div id="test" style="color: #ffffff">
+    Test
+</div>
+</body>
+</html>
